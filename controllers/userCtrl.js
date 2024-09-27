@@ -64,6 +64,21 @@ const userCtrl = {
             return res.status(500).json({ msg: err.message })
         }
     },
+    activateUser: async(req, res) => {
+        try {
+            const { is_active } = req.body
+            console.log(req.body);
+            
+            await User.findOneAndUpdate({ _id: req.params.id },{
+                is_active
+            }, {new: true})
+            
+            if (is_active) { res.json({msg: "User is activated"})} 
+            else { res.json({msg: "User is deactivated"}) }
+        } catch (err) {
+            return res.status(500).json({ msg: err.message })
+        }
+    },
     deleteUser: async (req, res) => {
         try {
             await User.findByIdAndDelete(req.params.id)

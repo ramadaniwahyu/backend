@@ -9,12 +9,13 @@ router.route('/users')
 
 router.route('/users/:id')
     .get(auth, authAdmin, userCtrl.getOneUser)
-    .patch(auth, authAdmin, userCtrl.updateUser)
+    .put(auth, authAdmin, userCtrl.updateUser)
+    .patch(auth, authAdmin, userCtrl.activateUser)
     .delete(auth, authAdmin, userCtrl.deleteUser)
 
 router.route('/profile')
     .get(auth, userCtrl.getUserInfo)
-    .patch(auth, userCtrl.updateUserInfo)
+    .put(auth, userCtrl.updateUserInfo)
 
 router.post('/login', userCtrl.login)
 router.get('/logout', userCtrl.logout)

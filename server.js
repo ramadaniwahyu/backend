@@ -30,7 +30,6 @@ mongoose.connect(URI).then(() => {
     process.exit();
 });
 
-
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
